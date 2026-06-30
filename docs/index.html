@@ -25,11 +25,18 @@
   <section>
     <h2>Files</h2>
     <p><a href="sample_flow.edn">sample_flow.edn</a></p>
+    <p><a href="oss_manifest.edn">oss_manifest.edn</a></p>
+    <p><a href="oss-reports/opensta.rpt">OpenSTA sample report</a></p>
+    <p><a href="oss-reports/openroad-route.rpt">OpenROAD sample report</a></p>
+    <p><a href="oss-reports/klayout.drc">KLayout DRC sample report</a></p>
+    <p><a href="oss-reports/netgen.lvs">Netgen LVS sample report</a></p>
+    <p><a href="oss-reports/ngspice.log">ngspice sample log</a></p>
     <p><a href="https://github.com/kotoba-lang/eda">GitHub repository</a></p>
   </section>
   <section>
     <h2>Run</h2>
-    <pre>clojure -M:test</pre>
+    <pre>clojure -M:test
+clojure -M:oss-normalize docs/oss_manifest.edn</pre>
   </section>
 </main>
 </body>

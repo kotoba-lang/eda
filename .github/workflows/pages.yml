@@ -23,6 +23,7 @@ jobs:
         with:
           cli: latest
       - run: clojure -M:test
+      - run: clojure -M:oss-normalize docs/oss_manifest.edn
   deploy:
     needs: test
     environment:
