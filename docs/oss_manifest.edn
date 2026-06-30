@@ -1,4 +1,11 @@
 {:eda.oss/id :kotoba.eda/oss-verification-sample
+ :eda.oss/updated "2026-06-30"
+ :eda.oss/maturity {:level :alpha/evidence-pipeline
+                    :normalizer :ci-verifiable
+                    :real-tool-execution :host-runner-required
+                    :manufacturing-signoff :not-signoff-ready}
+ :eda.oss/license-policy {:default :license/apache-2.0
+                          :upstream-derived :preserve-upstream-license-and-notice}
  :eda.oss/reports
  [{:eda.job/id :sta-tt
    :eda.job/tool :sw/opensta
