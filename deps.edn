@@ -1,6 +1,7 @@
 {:paths ["src" "resources"]
  :aliases
  {:oss-normalize {:main-opts ["-m" "kotoba.eda.cli"]}
+  :site {:main-opts ["-m" "kotoba.eda.site-cli"]}
   :test {:extra-paths ["test"]
          :extra-deps {io.github.cognitect-labs/test-runner
                       {:git/tag "v0.5.1" :git/sha "dfb30dd"}}

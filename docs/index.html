@@ -1,43 +1,13 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>kotoba EDA</title>
-  <style>
-    body { font-family: system-ui, sans-serif; margin: 0; color: #111; background: #f7f7f4; }
-    main { max-width: 980px; margin: 0 auto; padding: 40px 20px; }
-    h1 { font-size: 38px; margin: 0 0 12px; }
-    section { border-top: 1px solid #ccc; padding: 22px 0; }
-    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-    pre { overflow: auto; background: #fff; border: 1px solid #ddd; padding: 14px; }
-    a { color: #0645ad; }
-  </style>
-</head>
-<body>
-<main>
-  <h1>kotoba EDA</h1>
-  <p>EDN-driven CLJC kernels for OpenSTA/OpenROAD/KLayout/Netgen/ngspice/ATE class computation.</p>
-  <section>
-    <h2>Scope</h2>
-    <p>Native CLJC kernels currently cover timing graph analysis, grid routing, rectangle DRC, netlist LVS, linear DC solve, and stuck-at ATE coverage.</p>
-  </section>
-  <section>
-    <h2>Files</h2>
-    <p><a href="sample_flow.edn">sample_flow.edn</a></p>
-    <p><a href="oss_manifest.edn">oss_manifest.edn</a></p>
-    <p><a href="oss-reports/opensta.rpt">OpenSTA sample report</a></p>
-    <p><a href="oss-reports/openroad-route.rpt">OpenROAD sample report</a></p>
-    <p><a href="oss-reports/klayout.drc">KLayout DRC sample report</a></p>
-    <p><a href="oss-reports/netgen.lvs">Netgen LVS sample report</a></p>
-    <p><a href="oss-reports/ngspice.log">ngspice sample log</a></p>
-    <p><a href="https://github.com/kotoba-lang/eda">GitHub repository</a></p>
-  </section>
-  <section>
-    <h2>Run</h2>
-    <pre>clojure -M:test
-clojure -M:oss-normalize docs/oss_manifest.edn</pre>
-  </section>
-</main>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"></meta><meta name="viewport" content="width=device-width, initial-scale=1"></meta><title>kotoba EDA</title><style>body { font-family:system-ui, sans-serif;margin:0;color:#111111;background:#f7f7f4; }
+main { max-width:980px;margin:0 auto;padding:40px 20px; }
+h1 { font-size:38px;margin:0 0 12px; }
+section { border-top:1px solid #dddddd;padding:22px 0; }
+table { width:100%;border-collapse:collapse;background:#ffffff; }
+th, td { border:1px solid #dddddd;padding:10px;text-align:left;vertical-align:top; }
+th { background:#ecece8; }
+code, pre { font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+pre { overflow:auto;background:#ffffff;border:1px solid #dddddd;padding:14px;font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+a { color:#0645ad; }</style></head><body><main><h1>kotoba EDA</h1><p>EDN-driven CLJC kernels for OpenSTA/OpenROAD/KLayout/Netgen/ngspice/ATE class computation.</p><section><h2>Scope</h2><p>Native CLJC kernels currently cover timing graph analysis, grid routing, rectangle DRC, netlist LVS, linear DC solve, and stuck-at ATE coverage.</p></section><section><h2>Coverage and maturity</h2><p>Status date: 2026-06-30. Practical maturity level: alpha evidence pipeline.</p><table><thead><tr><th>Area</th><th>Coverage now</th><th>Maturity</th></tr></thead><tbody><tr><td>EDN data contract</td><td>Flow jobs, OSS report manifests, signoff evidence rows</td><td>CI-verifiable</td></tr><tr><td>CLJC native kernels</td><td>Timing, routing, DRC, LVS, DC solve, stuck-at coverage</td><td>Prototype</td></tr><tr><td>OSS report normalization</td><td>OpenSTA, OpenROAD, KLayout, Magic, Netgen, ngspice, OpenLane</td><td>CI-verifiable</td></tr><tr><td>Workbench integration</td><td>Evidence import and links from kotoba EDA</td><td>Demo-to-alpha</td></tr><tr><td>Tapeout signoff</td><td>Evidence shape only</td><td>Not signoff-ready</td></tr></tbody></table><p>Real tapeout still requires foundry PDK/rule decks, real OSS tool execution, waiver review, corner/PVT matrix, and human approval.</p></section><section><h2>Files</h2><p><a href="sample_flow.edn">sample_flow.edn</a></p><p><a href="oss_manifest.edn">oss_manifest.edn</a></p><p><a href="oss-reports/opensta.rpt">OpenSTA sample report</a></p><p><a href="oss-reports/openroad-route.rpt">OpenROAD sample report</a></p><p><a href="oss-reports/klayout.drc">KLayout DRC sample report</a></p><p><a href="oss-reports/netgen.lvs">Netgen LVS sample report</a></p><p><a href="oss-reports/ngspice.log">ngspice sample log</a></p><p><a href="https://github.com/kotoba-lang/eda">GitHub repository</a></p></section><section><h2>Run</h2><pre>clojure -M:test
+clojure -M:site
+clojure -M:oss-normalize docs/oss_manifest.edn</pre></section></main></body></html>

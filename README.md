@@ -2,6 +2,16 @@
 
 EDN-driven CLJC kernels for native kotoba EDA computation.
 
+License: Apache-2.0.
+
+kotoba-lang repositories are Apache-2.0 by default. If a repository is a fork,
+port, or derivative of an upstream project such as browser-use, the upstream
+repository license and required notices take precedence and must be preserved.
+
+UI source: `kotoba.eda.site` is the canonical Hiccup + shadow-css data source
+for the published docs page. `docs/index.html` is generated from that source
+with `clojure -M:site`.
+
 This repository does not claim to be a drop-in replacement for full OpenROAD,
 OpenSTA, KLayout, Netgen, ngspice, or commercial ATE stacks. It provides a
 portable kotoba-native execution model with deterministic evidence output:
@@ -18,10 +28,29 @@ portable kotoba-native execution model with deterministic evidence output:
 All inputs and outputs are EDN maps. The kernels are pure CLJC so the same data
 model can run in a browser, CI, or a host runner.
 
+## Current coverage and maturity
+
+Status date: 2026-06-30.
+
+| Area | Coverage now | Maturity | Notes |
+| --- | --- | --- | --- |
+| EDN data contract | Flow jobs, OSS report manifests, signoff evidence rows | CI-verifiable | Stable enough for sample CI and workbench import. Schema still needs versioned compatibility tests before external users depend on it. |
+| CLJC native kernels | Timing graph, grid routing, rectangle DRC, connectivity LVS, linear DC solve, stuck-at coverage | Prototype | These perform real deterministic calculations, but are intentionally small educational/pre-signoff kernels, not full tool replacements. |
+| OSS report normalization | OpenSTA, OpenROAD, KLayout, Magic, Netgen, ngspice, OpenLane sample reports | CI-verifiable | Converts report text to `:eda.signoff/*` evidence and blocks negative slack, overflow, DRC/LVS failures, and ngspice fatal errors. |
+| Browser/workbench integration | Links from kotoba EDA workbench, evidence import, sample signoff evidence | Demo-to-alpha | Good for reviewing evidence shape and handoff packets. Needs real project upload/auth/storage before production use. |
+| CI reproducibility | `clojure -M:test` plus `clojure -M:oss-normalize docs/oss_manifest.edn` | CI-verifiable | Current CI proves parser/kernel behavior on fixtures. It does not yet install and execute OpenROAD/OpenSTA/KLayout/Netgen/ngspice. |
+| Tapeout/manufacturing signoff | Evidence shape for PVT/DRC/LVS/SPICE/route/ATE | Not signoff-ready | Real tapeout still requires foundry PDK/rule decks, real OSS tool execution, waiver review, corner/PVT matrix, and human approval. |
+
+Practical maturity level: **alpha evidence pipeline**. It is useful for building
+repeatable CI evidence around OSS EDA outputs, but it is not a production
+replacement for full OpenROAD/OpenSTA/KLayout/Netgen/ngspice runs or foundry
+signoff.
+
 ## Run
 
 ```sh
 clojure -M:test
+clojure -M:site
 clojure -M -e "(require '[kotoba.eda.core :as eda] '[clojure.edn :as edn]) (println (eda/run-flow (edn/read-string (slurp \"docs/sample_flow.edn\"))))"
 clojure -M:oss-normalize docs/oss_manifest.edn
 ```
