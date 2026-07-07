@@ -92,3 +92,34 @@ Manifest example:
 
 The normalizer is intentionally strict: negative slack, route overflow, DRC
 violations, LVS mismatches, or ngspice fatal errors become failed evidence.
+
+## SDC-driven timing jobs
+
+`kotoba.eda.sdc-adapter` lets `analyze-timing` be driven by a real SDC
+(Synopsys Design Constraints) script from
+[`kotoba-lang/org-synopsys-sdc`](https://github.com/kotoba-lang/org-synopsys-sdc)
+instead of requiring a hand-built `:eda.timing/clock-period-ns` number:
+
+```clojure
+(require '[kotoba.eda.sdc-adapter :as sdc-adapter])
+
+(sdc-adapter/analyze-timing-from-sdc
+  "create_clock -period 10.0 -name clk [get_ports clk]"
+  {:eda.job/tool :sw/opensta
+   :eda.job/operation :op/analyze-timing
+   :eda.timing/corners [{:corner/id :tt :corner/scale 1.0}]
+   :eda.timing/nodes [:in :u1 :out]
+   :eda.timing/edges [{:from :in :to :u1 :delay-ns 3.0}
+                       {:from :u1 :to :out :delay-ns 3.0}]
+   :eda.timing/endpoints [:out]})
+```
+
+It parses the script with `sdc.parser/parse-script`, takes the FIRST
+`create_clock` command's `-period` value, and merges it in as
+`:eda.timing/clock-period-ns`. This is intentionally minimal: only the
+primary clock period crosses the wire today, org-synopsys-sdc's
+`set_input_delay`/`set_output_delay`/`set_false_path`/`set_multicycle_path`
+models are not yet consumed by any kernel here. A script with no
+`create_clock` command raises a clear `ex-info` rather than silently
+defaulting the period to zero. Same alpha, prototype-grade maturity as the
+rest of this repo -- see the coverage table above.
