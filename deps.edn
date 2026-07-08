@@ -1,5 +1,5 @@
 {:paths ["src" "resources"]
- :deps {io.github.kotoba-lang/org-synopsys-sdc {:local/root "../org-synopsys-sdc"}}
+ :deps {io.github.kotoba-lang/org-synopsys-sdc {:git/sha "5dfcd1e9cfbe7d000c169460b25e0308165f1db7"}}
  :aliases
  {:oss-normalize {:main-opts ["-m" "kotoba.eda.cli"]}
   :site {:main-opts ["-m" "kotoba.eda.site-cli"]}
