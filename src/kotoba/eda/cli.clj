@@ -1,7 +1,7 @@
 (ns kotoba.eda.cli
-  (:require [clojure.edn :as edn]
-            [clojure.java.io :as io]
-            [kotoba.eda.oss-report :as oss]))
+  (:require [clojure.java.io :as io]
+            [kotoba.eda.oss-report :as oss]
+            [kotoba.eda.tx-edn :as tx-edn]))
 
 (defn- read-report [base spec]
   (let [path (:eda.job/report spec)]
@@ -12,7 +12,7 @@
     (throw (ex-info "usage: clojure -M:oss-normalize <manifest.edn>" {})))
   (let [manifest-file (io/file manifest-path)
         base (.getParentFile manifest-file)
-        manifest (edn/read-string (slurp manifest-file))
+        manifest (tx-edn/slurp-tx-edn manifest-file)
         reports (mapv #(read-report base %) (:eda.oss/reports manifest))]
     (binding [*print-namespace-maps* false]
       (prn (oss/normalize-reports reports)))))

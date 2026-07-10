@@ -1,10 +1,10 @@
 (ns kotoba.eda.oss-report-test
   (:require [clojure.test :refer [deftest is]]
-            [clojure.edn :as edn]
-            [kotoba.eda.oss-report :as oss]))
+            [kotoba.eda.oss-report :as oss]
+            [kotoba.eda.tx-edn :as tx-edn]))
 
 (deftest normalizes-passing-oss-reports
-  (let [manifest (edn/read-string (slurp "docs/oss_manifest.edn"))
+  (let [manifest (tx-edn/slurp-tx-edn "docs/oss_manifest.edn")
         reports (mapv (fn [spec]
                         (assoc spec :text (slurp (str "docs/" (:eda.job/report spec)))))
                       (:eda.oss/reports manifest))
