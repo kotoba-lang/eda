@@ -1,10 +1,10 @@
 (ns kotoba.eda.core-test
   (:require [clojure.test :refer [deftest is]]
-            [clojure.edn :as edn]
-            [kotoba.eda.core :as eda]))
+            [kotoba.eda.core :as eda]
+            [kotoba.eda.tx-edn :as tx-edn]))
 
 (deftest sample-flow-produces-evidence
-  (let [flow (edn/read-string (slurp "docs/sample_flow.edn"))
+  (let [flow (tx-edn/slurp-tx-edn "docs/sample_flow.edn")
         result (eda/run-flow flow)]
     (is (= :passed (:eda.flow/status result)))
     (is (= 6 (:eda.flow/pass-count result)))
