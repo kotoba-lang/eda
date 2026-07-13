@@ -4,4 +4,4 @@
 
 (defn -main [& _]
   (spit (io/file "docs" "index.html") (site/html))
-  (println "wrote docs/index.html from kotoba.eda.site Hiccup/shadow-css"))
+  (println "wrote docs/index.html from kotoba.eda.site (kotoba-ui ->page)"))

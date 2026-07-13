@@ -18,13 +18,36 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      # kotoba-ui / appkit (+ their shitsuke / liquid-glass-ui :local/root
+      # pins) are west siblings — check them out next to eda/.
       - uses: actions/checkout@v4
+        with:
+          path: eda
+      - uses: actions/checkout@v4
+        with:
+          repository: kotoba-lang/kotoba-ui
+          path: kotoba-ui
+      - uses: actions/checkout@v4
+        with:
+          repository: kotoba-lang/appkit
+          path: appkit
+      - uses: actions/checkout@v4
+        with:
+          repository: kotoba-lang/shitsuke
+          path: shitsuke
+      - uses: actions/checkout@v4
+        with:
+          repository: kotoba-lang/liquid-glass-ui
+          path: liquid-glass-ui
       - uses: DeLaGuardo/setup-clojure@13.2
         with:
           cli: latest
       - run: clojure -M:test
+        working-directory: eda
       - run: clojure -M:site
+        working-directory: eda
       - run: clojure -M:oss-normalize docs/oss_manifest.edn
+        working-directory: eda
   deploy:
     needs: test
     environment:

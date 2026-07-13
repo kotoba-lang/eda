@@ -1,5 +1,12 @@
 {:paths ["src" "resources"]
- :deps {io.github.kotoba-lang/org-synopsys-sdc {:git/sha "5dfcd1e9cfbe7d000c169460b25e0308165f1db7"}}
+ ;; kotoba-ui / appkit are the design-system paved road (kotoba-ui/docs/
+ ;; agent-guide.md) — :local/root west siblings (orgs/kotoba-lang/*), same
+ ;; convention as appkit's own deps. kotoba-ui itself pins shitsuke /
+ ;; liquid-glass-ui as :local/root siblings, so those checkouts must also
+ ;; sit next to this repo (CI checks them out — see .github/workflows).
+ :deps {io.github.kotoba-lang/org-synopsys-sdc {:git/sha "5dfcd1e9cfbe7d000c169460b25e0308165f1db7"}
+        io.github.kotoba-lang/kotoba-ui {:local/root "../kotoba-ui"}
+        io.github.kotoba-lang/appkit {:local/root "../appkit"}}
  :aliases
  {:oss-normalize {:main-opts ["-m" "kotoba.eda.cli"]}
   :site {:main-opts ["-m" "kotoba.eda.site-cli"]}
