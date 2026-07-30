@@ -5,8 +5,10 @@
  ;; liquid-glass-ui as :local/root siblings, so those checkouts must also
  ;; sit next to this repo (CI checks them out — see .github/workflows).
  :deps {io.github.kotoba-lang/org-synopsys-sdc {:git/sha "5dfcd1e9cfbe7d000c169460b25e0308165f1db7"}
-        io.github.kotoba-lang/kotoba-ui {:local/root "../kotoba-ui"}
-        io.github.kotoba-lang/appkit {:local/root "../appkit"}}
+        io.github.kotoba-lang/kotoba-ui {:git/url "https://github.com/kotoba-lang/kotoba-ui.git"
+                                     :git/sha "4167b3aa911690368bb47b61e825c47d3327bfac"}
+        io.github.kotoba-lang/appkit {:git/url "https://github.com/kotoba-lang/appkit.git"
+                                     :git/sha "03b1c5373817229060f3fac9e41e97775c320997"}}
  :aliases
  {:oss-normalize {:main-opts ["-m" "kotoba.eda.cli"]}
   :site {:main-opts ["-m" "kotoba.eda.site-cli"]}
