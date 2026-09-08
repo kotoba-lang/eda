@@ -1,5 +1,5 @@
 (ns kotoba.eda.site-test
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [kotoba.eda.site :as site]))
 
