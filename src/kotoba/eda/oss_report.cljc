@@ -1,6 +1,6 @@
 (ns kotoba.eda.oss-report
   "Normalizes OSS EDA report text into kotoba signoff evidence EDN."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [kotoba.eda.core :as eda]))
 
 (def tool->type
