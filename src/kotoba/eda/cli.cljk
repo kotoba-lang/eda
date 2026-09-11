@@ -9,7 +9,7 @@
 
 (defn -main [& [manifest-path]]
   (when-not manifest-path
-    (throw (ex-info "usage: clojure -M:oss-normalize <manifest.edn>" {})))
+    (throw (ex-info "usage: kbb -M:oss-normalize <manifest.edn>" {})))
   (let [manifest-file (io/file manifest-path)
         base (.getParentFile manifest-file)
         manifest (tx-edn/slurp-tx-edn manifest-file)

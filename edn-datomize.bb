@@ -1,4 +1,4 @@
-#!/usr/bin/env bb
+#!/usr/bin/env kbb
 ;; edn-datomize.bb — EDN → Datomic/Datascript tx-data conversion tool for this repo.
 ;;
 ;; Adapted from com-junkawasaki/manifest/edn-datomize.bb for kotoba-lang/eda.
