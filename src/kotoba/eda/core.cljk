@@ -192,7 +192,7 @@
               [a b] (reduce (fn [[aa bb] r]
                               (let [f (double (get-in aa [r i]))]
                                 [(assoc aa r (mapv - (aa r) (mapv #(* f %) (aa i))))
-                                 (assoc bb r (- (double (bb r)) (* f (double (bb i)))))]))
+                                 (assoc bb r (- (double (kbb -M:r)) (* f (double (kbb -M:i)))))]))
                             [a b]
                             rows)]
           (recur (inc i) a b))))))

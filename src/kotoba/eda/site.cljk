@@ -72,7 +72,7 @@
          [:p [:a {:href href} label]])))
    (ui/section {:title "Run"}
      (appkit/panel
-      [[:pre [:code "clojure -M:test\nclojure -M:site\nclojure -M:oss-normalize docs/oss_manifest.edn"]]]))])
+      [[:pre [:code "kbb -M:test\nclojure -M:site\nclojure -M:oss-normalize docs/oss_manifest.edn"]]]))])
 
 (defn html
   "Complete HTML document string for docs/index.html — kotoba-ui.core/->page
