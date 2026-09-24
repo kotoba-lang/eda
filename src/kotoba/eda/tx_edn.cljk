@@ -13,7 +13,7 @@
   that: strip :db/id and read any blob string back into live data, so
   downstream key lookups (:eda.oss/reports, :eda.flow/jobs, ...) keep
   working unchanged."
-  (:require [clojure.edn :as edn]))
+  (:require [kotoba.lang.edn :as edn]))
 
 (defn- unblob [v]
   (if (string? v)
