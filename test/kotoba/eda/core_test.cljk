@@ -1,5 +1,5 @@
 (ns kotoba.eda.core-test
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [kotoba.eda.core :as eda]
             [kotoba.eda.tx-edn :as tx-edn]))
 

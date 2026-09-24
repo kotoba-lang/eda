@@ -1,5 +1,5 @@
 (ns kotoba.eda.oss-report-test
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [kotoba.eda.oss-report :as oss]
             [kotoba.eda.tx-edn :as tx-edn]))
 

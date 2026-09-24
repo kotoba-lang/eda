@@ -1,6 +1,6 @@
 (ns kotoba.eda.site-test
   (:require [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [kotoba.eda.site :as site]))
 
 (deftest renders-paved-road-page
