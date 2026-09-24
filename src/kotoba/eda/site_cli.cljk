@@ -1,5 +1,5 @@
 (ns kotoba.eda.site-cli
-  (:require [clojure.java.io :as io]
+  (:require [kotoba.io :as io]
             [kotoba.eda.site :as site]))
 
 (defn -main [& _]

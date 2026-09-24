@@ -4,8 +4,8 @@
   These kernels are intentionally small, deterministic, and inspectable. They
   implement useful calculations for CI/browser validation and produce signoff
   evidence compatible with the kotoba EDA workbench."
-  #?(:clj (:require [clojure.set :as set])
-     :cljs (:require [clojure.set :as set])))
+  #?(:clj (:require [kotoba.lang.coll :as set])
+     :cljs (:require [kotoba.lang.coll :as set])))
 
 (def signoff-types
   {:sw/opensta :signoff/timing-pvt
